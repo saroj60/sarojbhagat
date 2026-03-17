@@ -74,10 +74,11 @@ const Experience = () => {
                                             <Calendar size={14} /> {item.year}
                                         </span>
                                         <h3 className="text-xl font-bold text-white mb-1">{item.degree}</h3>
-                                        <p className="text-gray-400 text-sm mb-3">{item.institution}</p>
-                                        <p className="text-gray-500 text-sm leading-relaxed">
+                                        <p className="text-gray-300 text-sm mb-3 font-medium">{item.institution}</p>
+                                        <p className="text-gray-400 text-sm leading-relaxed">
                                             {item.description}
                                         </p>
+
                                     </div>
                                 </div>
                             </motion.div>

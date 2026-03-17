@@ -1,17 +1,49 @@
 import { motion } from "framer-motion";
 
 const CyberGlitch = ({ text }) => {
+    const glitchVariants = {
+        initial: { opacity: 0, x: 0 },
+        hover: (custom) => ({
+            opacity: 0.7,
+            x: custom === "red" ? 2 : -2,
+            transition: {
+                repeat: Infinity,
+                repeatType: "reverse",
+                duration: 0.1,
+                delay: Math.random() * 0.2
+            }
+        })
+    };
+
     return (
-        <div className="relative inline-block group">
-            <span className="relative z-10">{text}</span>
-            <span className="absolute top-0 left-0 -z-10 w-full h-full text-neon-red opacity-0 group-hover:opacity-70 animate-pulse translate-x-[2px]">
+        <motion.div 
+            className="relative inline-block group cursor-default"
+            initial="initial"
+            whileHover="hover"
+        >
+            <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-accent to-neon-purple drop-shadow-lg">
                 {text}
             </span>
-            <span className="absolute top-0 left-0 -z-10 w-full h-full text-neon-blue opacity-0 group-hover:opacity-70 animate-pulse -translate-x-[2px]">
+            <motion.span 
+                variants={glitchVariants}
+                custom="red"
+                className="absolute top-0 left-0 -z-10 w-full h-full text-neon-red blur-[1px] pointer-events-none"
+            >
                 {text}
-            </span>
-        </div>
+            </motion.span>
+            <motion.span 
+                variants={glitchVariants}
+                custom="cyan"
+                className="absolute top-0 left-0 -z-10 w-full h-full text-accent blur-[1px] pointer-events-none"
+            >
+                {text}
+            </motion.span>
+        </motion.div>
     );
 };
+
+
+
+
 
 export default CyberGlitch;

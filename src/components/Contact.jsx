@@ -13,6 +13,8 @@ const Contact = () => {
         subject: "",
         message: ""
     });
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -27,13 +29,21 @@ const Contact = () => {
         }
 
         playClick();
+        setIsSubmitted(true);
 
         const phoneNumber = "9779815769007";
         const text = `*New Transmission Received*%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Subject:* ${subject}%0A*Message:*%0A${message}`;
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${text}`;
 
         window.open(whatsappUrl, "_blank");
+        
+        // Reset form after a delay
+        setTimeout(() => {
+            setIsSubmitted(false);
+            setFormData({ name: "", email: "", subject: "", message: "" });
+        }, 3000);
     };
+
 
     return (
         <section id="contact" className="py-20 bg-slate-950/50">
@@ -48,11 +58,12 @@ const Contact = () => {
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 font-space uppercase tracking-widest">
                         Get In <span className="text-accent text-glow">Touch</span>
                     </h2>
-                    <p className="text-gray-400 max-w-xl mx-auto font-mono text-sm">
+                    <p className="text-gray-300 max-w-xl mx-auto font-mono text-sm">
                         // INITIALIZE_COMMUNICATION_PROTOCOL
                         <br />
                         Hiring for a project or just want to say hi? Signal strength is strong.
                     </p>
+
                 </motion.div>
 
                 <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
@@ -70,9 +81,10 @@ const Contact = () => {
                             </div>
                             <div>
                                 <h3 className="text-lg font-bold text-white mb-1">Email</h3>
-                                <a href="mailto:sarojbhagat666@gmail.com" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                                <a href="mailto:sarojbhagat666@gmail.com" className="text-gray-300 hover:text-cyan-400 transition-colors underline decoration-cyan-500/20 underline-offset-4">
                                     sarojbhagat666@gmail.com
                                 </a>
+
                             </div>
                         </div>
 
@@ -82,7 +94,8 @@ const Contact = () => {
                             </div>
                             <div>
                                 <h3 className="text-lg font-bold text-white mb-1">Phone</h3>
-                                <p className="text-gray-400">+977 9815769007</p>
+                                <p className="text-gray-300">+977 9815769007</p>
+
                             </div>
                         </div>
 
@@ -92,7 +105,8 @@ const Contact = () => {
                             </div>
                             <div>
                                 <h3 className="text-lg font-bold text-white mb-1">Location</h3>
-                                <p className="text-gray-400">Kathmandu, Nepal</p>
+                                <p className="text-gray-300">Kathmandu, Nepal</p>
+
                             </div>
                         </div>
 
@@ -101,11 +115,12 @@ const Contact = () => {
                                 <Send size={48} />
                             </div>
                             <h4 className="text-xl font-bold text-white mb-2 font-space uppercase">System Alert</h4>
-                            <p className="text-gray-400 text-sm mb-4 font-mono">
+                            <p className="text-gray-300 text-sm mb-4 font-mono">
                                 &gt; Developer available for deployment.
                                 <br />
                                 &gt; Initialize collaboration sequence?
                             </p>
+
                             <a
                                 href="mailto:sarojbhagat666@gmail.com"
                                 onMouseEnter={playHover}
@@ -134,9 +149,12 @@ const Contact = () => {
                                         id="name"
                                         value={formData.name}
                                         onChange={handleChange}
-                                        className="w-full bg-slate-950/50 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-accent focus:border-glow transition-all font-mono placeholder:text-gray-600"
+                                        className="w-full bg-slate-950/50 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-accent focus:border-glow transition-all font-mono placeholder:text-gray-400"
+
                                         placeholder="ENTER_NAME"
+                                        required
                                     />
+
                                 </div>
                                 <div>
                                     <label htmlFor="email" className="block text-xs font-mono text-accent mb-2 uppercase tracking-widest">Email</label>
@@ -145,9 +163,12 @@ const Contact = () => {
                                         id="email"
                                         value={formData.email}
                                         onChange={handleChange}
-                                        className="w-full bg-slate-950/50 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-accent focus:border-glow transition-all font-mono placeholder:text-gray-600"
+                                        className="w-full bg-slate-950/50 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-accent focus:border-glow transition-all font-mono placeholder:text-gray-400"
+
                                         placeholder="ENTER_EMAIL"
+                                        required
                                     />
+
                                 </div>
                             </div>
                             <div>
@@ -157,7 +178,8 @@ const Contact = () => {
                                     id="subject"
                                     value={formData.subject}
                                     onChange={handleChange}
-                                    className="w-full bg-slate-950/50 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-accent focus:border-glow transition-all font-mono placeholder:text-gray-600"
+                                    className="w-full bg-slate-950/50 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-accent focus:border-glow transition-all font-mono placeholder:text-gray-400"
+
                                     placeholder="SUBJECT_LINE"
                                 />
                             </div>
@@ -168,18 +190,31 @@ const Contact = () => {
                                     rows="4"
                                     value={formData.message}
                                     onChange={handleChange}
-                                    className="w-full bg-slate-950/50 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-accent focus:border-glow transition-all resize-none font-mono placeholder:text-gray-600"
+                                    className="w-full bg-slate-950/50 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-accent focus:border-glow transition-all resize-none font-mono placeholder:text-gray-400"
+
                                     placeholder="TRANSMISSION_CONTENT..."
+                                    required
                                 ></textarea>
+
                             </div>
                             <button
                                 type="button"
                                 onMouseEnter={playHover}
                                 onClick={handleSend}
-                                className="w-full py-3 bg-accent/10 border border-accent text-accent font-bold font-space uppercase tracking-widest rounded-sm hover:bg-accent hover:text-black hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all flex items-center justify-center gap-2 group"
+                                disabled={isSubmitted}
+                                className={`w-full py-3 border font-bold font-space uppercase tracking-widest rounded-sm transition-all flex items-center justify-center gap-2 group ${
+                                    isSubmitted 
+                                    ? "bg-green-500/20 border-green-500 text-green-500 cursor-default" 
+                                    : "bg-accent/10 border-accent text-accent hover:bg-accent hover:text-black hover:shadow-[0_0_20px_rgba(0,240,255,0.4)]"
+                                }`}
                             >
-                                Send Transmission <Send size={18} className="group-hover:translate-x-1 transition-transform" />
+                                {isSubmitted ? (
+                                    <>Transmission Sent <Send size={18} className="animate-bounce" /></>
+                                ) : (
+                                    <>Send Transmission <Send size={18} className="group-hover:translate-x-1 transition-transform" /></>
+                                )}
                             </button>
+
                         </form>
                     </motion.div>
                 </div>

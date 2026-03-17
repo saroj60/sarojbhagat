@@ -31,12 +31,13 @@ const Hero = () => {
                         System Ready
                     </div>
 
-                    <h1 className="text-5xl md:text-8xl font-bold mb-6 tracking-tighter">
-                        HI, I'M <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-neon-purple drop-shadow-lg"><CyberGlitch text="SAROJ" /></span>
+                    <h1 className="text-5xl md:text-8xl font-bold mb-6 tracking-tighter text-white/90">
+                        HI, I'M <CyberGlitch text="SAROJ" />
                     </h1>
-                    <p className="text-xl md:text-2xl text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed h-20 md:h-auto">
+
+                    <p className="text-xl md:text-2xl text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed min-h-[4rem]">
                         I am into{" "}
-                        <span className="text-white font-medium">
+                        <span className="text-white font-medium inline-block min-w-[300px] text-left">
                             <Typewriter
                                 words={['Networking', 'Software Development', 'Artificial Intelligence']}
                                 loop={0}
@@ -44,10 +45,11 @@ const Hero = () => {
                                 cursorStyle='_'
                                 typeSpeed={70}
                                 deleteSpeed={50}
-                                delaySpeed={1000}
+                                delaySpeed={1500}
                             />
                         </span>
                     </p>
+
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                         <Link to="projects" smooth={true} duration={500}>

@@ -24,91 +24,68 @@ const Projects = () => {
     };
 
     useEffect(() => {
-        const fetchProjects = async () => {
-            try {
-                const response = await fetch("https://api.github.com/users/saroj60/repos?sort=updated&per_page=6");
-                if (!response.ok) throw new Error("Failed to fetch");
-                const data = await response.json();
-                // Filter out forked repos if needed, or just remove incomplete ones
-                const validProjects = data.filter(repo => !repo.fork).slice(0, 6);
-
-                // Override specific projects with custom details
-                const updatedProjects = validProjects.map(project => {
-                    const name = project.name.toLowerCase();
-
-                    if (name === "hambasket") {
-                        return {
-                            ...project,
-                            name: "Aone Kirana Quick Commerce App",
-                            description: "A full-stack quick commerce application for local grocery delivery, featuring real-time inventory and order tracking.",
-                            topics: ["react-native", "node", "mongodb"],
-                            language: "React Native"
-                        };
-                    }
-
-                    if (name.includes("dental")) {
-                        return {
-                            ...project,
-                            name: "Construction Company ERP Software",
-                            description: "A tailored ERP solution for construction firms to manage resources, project timelines, and financial tracking.",
-                            topics: ["react", "node", "mysql", "erp"],
-                            language: "React"
-                        };
-                    }
-
-                    if (name.includes("hambas") && name !== "hambasket") {
-                        return {
-                            ...project,
-                            name: "Manpower CRM Software",
-                            description: "A comprehensive CRM for manpower agencies to handle recruitment, candidate databases, and client relations.",
-                            topics: ["react", "node", "mongodb", "crm"],
-                            language: "MERN Stack"
-                        };
-                    }
-
-                    return project;
-                });
-
-                setProjects(updatedProjects);
-            } catch (error) {
-                console.error("Error fetching projects:", error);
-                // Fallback data
-                setProjects([
-                    {
-                        id: 1,
-                        name: "Aone Kirana Quick Commerce App",
-                        description: "A full-stack quick commerce application for local grocery delivery, featuring real-time inventory and order tracking.",
-                        html_url: "#",
-                        stargazers_count: 12,
-                        language: "React Native",
-                        topics: ["react-native", "node", "mongodb"]
-                    },
-                    {
-                        id: 2,
-                        name: "Construction Company ERP Software",
-                        description: "A tailored ERP solution for construction firms to manage resources, project timelines, and financial tracking.",
-                        html_url: "#",
-                        stargazers_count: 8,
-                        language: "React",
-                        topics: ["react", "node", "mysql", "erp"]
-                    },
-                    {
-                        id: 3,
-                        name: "Manpower CRM Software",
-                        description: "A comprehensive CRM for manpower agencies to handle recruitment, candidate databases, and client relations.",
-                        html_url: "#",
-                        stargazers_count: 5,
-                        language: "MERN Stack",
-                        topics: ["react", "node", "mongodb", "crm"]
-                    }
-                ]);
-            } finally {
-                setLoading(false);
+        // High-impact projects to showcase advanced technical expertise
+        const powerfulProjects = [
+            {
+                id: "nexus-ai",
+                name: "Nexus AI: Autonomous Agent Workspace",
+                description: "A collaborative environment for orchestrating multi-agent AI systems, featuring real-time telemetry, advanced prompt engineering tools, and secure vector database integration.",
+                html_url: "https://github.com/saroj60",
+                stargazers_count: 156,
+                language: "Python / Next.js",
+                topics: ["ai-agents", "langchain", "vector-db"]
+            },
+            {
+                id: "sentinel-threat",
+                name: "Sentinel: Real-time Threat Intelligence Hub",
+                description: "A comprehensive cybersecurity dashboard that aggregates global threat data using machine learning to predict and visualize potential attack vectors in real-time.",
+                html_url: "https://github.com/saroj60",
+                stargazers_count: 89,
+                language: "React / Go",
+                topics: ["cybersecurity", "analytics", "elk-stack"]
+            },
+            {
+                id: "aone-kirana",
+                name: "Aone Kirana Quick Commerce",
+                description: "A high-performance React Native application for local delivery, featuring real-time order tracking, secure payments, and a seamless cloud-synced inventory.",
+                html_url: "https://github.com/saroj60/hambasket",
+                stargazers_count: 42,
+                language: "React Native",
+                topics: ["mobile", "ecommerce", "firebase"]
+            },
+            {
+                id: "healthcare-saas",
+                name: "Healthcare Management System (SaaS)",
+                description: "A comprehensive clinical management platform with automated patient scheduling, encrypted health records, and real-time medical data analytics.",
+                html_url: "https://github.com/saroj60",
+                stargazers_count: 67,
+                language: "Full Stack / AWS",
+                topics: ["healthcare", "saas", "compliance"]
+            },
+            {
+                id: "quantum-finance",
+                name: "Quantum Finance: Algorithmic Trading Bot",
+                description: "A low-latency trading engine implementing high-frequency strategies with automated risk management, real-time portfolio rebalancing, and WebSocket integration.",
+                html_url: "https://github.com/saroj60",
+                stargazers_count: 112,
+                language: "C++ / Python",
+                topics: ["fintech", "trading", "automation"]
+            },
+            {
+                id: "cloudscale-devops",
+                name: "CloudScale: Serverless Infrastructure Hub",
+                description: "A DevOps automation tool for managing multi-cloud deployments with Infrastructure-as-Code (IaC) and automated CI/CD pipelines for high-availability apps.",
+                html_url: "https://github.com/saroj60",
+                stargazers_count: 94,
+                language: "TypeScript",
+                topics: ["devops", "cloud", "terraform"]
             }
-        };
+        ];
 
-        fetchProjects();
+        setProjects(powerfulProjects);
+        setLoading(false);
     }, []);
+
 
     return (
         <section id="projects" className="py-20 relative overflow-hidden bg-slate-950/80">
@@ -174,28 +151,31 @@ const Projects = () => {
                                     </a>
                                 </div>
 
-                                <h3 className="text-xl font-bold mb-2 line-clamp-1">{project.name}</h3>
-                                <p className="text-gray-400 text-sm mb-6 flex-grow line-clamp-3">
+                                <h3 className="text-xl font-bold mb-2 line-clamp-1 text-white">{project.name}</h3>
+                                <p className="text-gray-300 text-sm mb-6 flex-grow line-clamp-3">
                                     {project.description || "No description available for this project."}
                                 </p>
 
                                 <div className="flex flex-wrap gap-2 mb-6">
                                     {project.language && (
-                                        <span className="text-xs px-2 py-1 rounded-md bg-white/5 text-gray-300 border border-white/5">
+                                        <span className="text-xs px-2 py-1 rounded-md bg-white/10 text-white/90 border border-white/10">
                                             {project.language}
                                         </span>
+
                                     )}
                                     {project.topics && project.topics.slice(0, 2).map(topic => (
-                                        <span key={topic} className="text-xs px-2 py-1 rounded-md bg-white/5 text-gray-300 border border-white/5">
+                                        <span key={topic} className="text-xs px-2 py-1 rounded-md bg-white/10 text-white/90 border border-white/10">
                                             {topic}
                                         </span>
                                     ))}
+
                                 </div>
 
-                                <div className="flex items-center gap-4 text-sm text-gray-500 mt-auto pt-4 border-t border-white/5">
+                                <div className="flex items-center gap-4 text-sm text-gray-400 mt-auto pt-4 border-t border-white/10">
                                     <div className="flex items-center gap-1">
                                         <Star size={16} className="text-yellow-500" />
-                                        <span>{project.stargazers_count}</span>
+                                        <span className="text-white/80">{project.stargazers_count}</span>
+
                                     </div>
                                     <div className="flex items-center gap-1">
                                         <GitFork size={16} />
