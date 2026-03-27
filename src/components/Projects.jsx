@@ -27,58 +27,58 @@ const Projects = () => {
         // High-impact projects to showcase advanced technical expertise
         const powerfulProjects = [
             {
-                id: "nexus-ai",
-                name: "Nexus AI: Autonomous Agent Workspace",
-                description: "A collaborative environment for orchestrating multi-agent AI systems, featuring real-time telemetry, advanced prompt engineering tools, and secure vector database integration.",
-                html_url: "https://github.com/saroj60",
-                stargazers_count: 156,
-                language: "Python / Next.js",
-                topics: ["ai-agents", "langchain", "vector-db"]
+                id: "mangocrm",
+                name: "Mango Farming & Supply Chain CRM",
+                description: "A production-ready platform for Mango Farming & Supply Chain Management in Nepal, featuring real-time tracking, inventory management, and farmer coordination.",
+                html_url: "https://github.com/saroj60/MangoCRM",
+                stargazers_count: 0,
+                language: "JavaScript / Node.js",
+                topics: ["crm", "supply-chain", "nepal"]
             },
             {
-                id: "sentinel-threat",
-                name: "Sentinel: Real-time Threat Intelligence Hub",
-                description: "A comprehensive cybersecurity dashboard that aggregates global threat data using machine learning to predict and visualize potential attack vectors in real-time.",
-                html_url: "https://github.com/saroj60",
-                stargazers_count: 89,
-                language: "React / Go",
-                topics: ["cybersecurity", "analytics", "elk-stack"]
+                id: "seven-seas",
+                name: "Seven Seas Education Platform",
+                description: "A comprehensive educational management system built to streamline student records, course materials, and administrative workflows for educational institutions.",
+                html_url: "https://github.com/saroj60/seven-seas-education",
+                stargazers_count: 0,
+                language: "JavaScript / React",
+                topics: ["education", "management", "edtech"]
             },
             {
-                id: "aone-kirana",
-                name: "Aone Kirana Quick Commerce",
-                description: "A high-performance React Native application for local delivery, featuring real-time order tracking, secure payments, and a seamless cloud-synced inventory.",
-                html_url: "https://github.com/saroj60/hambasket",
-                stargazers_count: 42,
-                language: "React Native",
-                topics: ["mobile", "ecommerce", "firebase"]
+                id: "bgc-erp",
+                name: "BGC ERP System",
+                description: "An Enterprise Resource Planning software tailored for business automation, financial tracking, and synchronized resource management across departments.",
+                html_url: "https://github.com/saroj60/BGC-ERP-software",
+                stargazers_count: 0,
+                language: "JavaScript / React",
+                topics: ["erp", "automation", "fintech"]
             },
             {
-                id: "healthcare-saas",
-                name: "Healthcare Management System (SaaS)",
-                description: "A comprehensive clinical management platform with automated patient scheduling, encrypted health records, and real-time medical data analytics.",
-                html_url: "https://github.com/saroj60",
-                stargazers_count: 67,
-                language: "Full Stack / AWS",
-                topics: ["healthcare", "saas", "compliance"]
+                id: "faisal-mgmt",
+                name: "Faisal Recruitment Management",
+                description: "A specialized recruitment platform featuring automated job applications, interactive contact forms, and streamlined candidate management workflows.",
+                html_url: "https://github.com/saroj60/faisalmanagement",
+                stargazers_count: 0,
+                language: "React / Vite",
+                topics: ["recruitment", "hiring", "job-portal"]
             },
             {
-                id: "quantum-finance",
-                name: "Quantum Finance: Algorithmic Trading Bot",
-                description: "A low-latency trading engine implementing high-frequency strategies with automated risk management, real-time portfolio rebalancing, and WebSocket integration.",
-                html_url: "https://github.com/saroj60",
-                stargazers_count: 112,
-                language: "C++ / Python",
-                topics: ["fintech", "trading", "automation"]
+                id: "heaven-overseas",
+                name: "Heaven Overseas Consultancy",
+                description: "A professional platform for overseas recruitment and consultancy services, managing international job placements and documentation for manpower agencies.",
+                html_url: "https://github.com/saroj60/heavenoverseas",
+                stargazers_count: 0,
+                language: "JavaScript / HTML",
+                topics: ["overseas", "consultancy", "placement"]
             },
             {
-                id: "cloudscale-devops",
-                name: "CloudScale: Serverless Infrastructure Hub",
-                description: "A DevOps automation tool for managing multi-cloud deployments with Infrastructure-as-Code (IaC) and automated CI/CD pipelines for high-availability apps.",
-                html_url: "https://github.com/saroj60",
-                stargazers_count: 94,
-                language: "TypeScript",
-                topics: ["devops", "cloud", "terraform"]
+                id: "saroj-portfolio",
+                name: "Gamer Cyberpunk Portfolio",
+                description: "This high-end professional portfolio featuring a cyberpunk aesthetic, integrated WhatsApp communication, and advanced Framer Motion animations.",
+                html_url: "https://github.com/saroj60/sarojbhagat",
+                stargazers_count: 1,
+                language: "React / Tailwind CSS",
+                topics: ["portfolio", "cyberpunk", "interactive"]
             }
         ];
 
